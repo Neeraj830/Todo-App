@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css';
 export default function TodoList(props) {
 	const [inputText, setInputText]=useState("");
+	const [inputTitle, setInputTitle]=useState("");
 	const handleEnterPress = (e) => {
 		if(e.keyCode === 13){
 			// eslint-disable-next-line react/prop-types
@@ -9,8 +10,21 @@ export default function TodoList(props) {
 			setInputText("");
 		}
 	}
+	const handleEnterPressTitle = (e) => {
+		if(e.keyCode === 13){
+			// eslint-disable-next-line react/prop-types
+			// props.addList(inputText);
+			// setInputText("");
+		}
+	}
   return (
 	<div className="input-container">
+		<input type="title" 
+		value={inputTitle}
+		className="input-box-todo" 
+		placeholder="Enter The Task" 
+		onChange={e=>{setInputTitle(e.target.value)}}
+		onKeyDown={handleEnterPressTitle}/>
 		<input type="text" 
 		value={inputText}
 		className="input-box-todo" 
